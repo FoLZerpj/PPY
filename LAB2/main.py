@@ -292,31 +292,62 @@ print("Updated Dictionary:", numbers_dict)
 input_numbers = input("Enter a series of space-separated integers: ")
 
 # Convert Input
+numbers_list = [int(x) for x in input_numbers.split(" ")]
+numbers_tuple = tuple(numbers_list)
 
 # Manipulate List
+numbers_list.append(10)
+numbers_list.insert(2, 20)
+numbers_list.remove(8)
 
 # Attempt to Modify Tuple (this will raise an error)
+try:
+    # Append 10 to the tuple
+    numbers_tuple.append(10)
+except AttributeError:
+    print("Tuples are immutable and cannot be modified.")
 
 # Set Operations
+# Union
+set_union = {1, 2, 5, 9}.union({10, 11, 12})
+# Intersection
+set_intersection = {18, 3, 8, 5}.intersection({8, 741, 81, 10, 5})
+# Difference
+set_difference = {1, 9, 8, 5, 3}.difference({5, 3, 1, 8})
 
 # Dictionary Operations
+numbers_dict = {5: 25, 2: 4, 8: 64, 1: 1, 9: 81}
 print("Original Dictionary:", numbers_dict)
 # Add a new key-value pair
+numbers_dict[11] = 121
 # Delete an existing key-value pair
+numbers_dict.pop(8)
 
 # Type Conversion
 # list_to_tuple =
+list_to_tuple = tuple(numbers_list)
 # list_to_set =
+list_to_set = set(numbers_list)
 # list_to_dict =
+list_to_dict = dict(zip(numbers_list, [x*x for x in numbers_list]))
 # tuple_to_list =
+tuple_to_list = list(numbers_tuple)
 # tuple_to_set =
+tuple_to_set = set(numbers_tuple)
 # tuple_to_dict =
+tuple_to_dict = dict(zip(numbers_tuple, [x*x for x in numbers_tuple]))
 # set_to_list =
+set_to_list = list(list_to_set)
 # set_to_tuple =
+set_to_tuple = tuple(list_to_set)
 # set_to_dict =
+set_to_dict = dict(zip(list_to_set, [x*x for x in list_to_set]))
 # dict_to_list =
+dict_to_list = list(numbers_dict)
 # dict_to_tuple =
+dict_to_tuple = tuple(numbers_dict)
 # dict_to_set =
+dict_to_set = set(numbers_dict)
 
 # Print Output
 print("List to Tuple:", list_to_tuple)
