@@ -628,6 +628,66 @@ These are fundamental constructs in Python programming that enable you to contro
   The program will generate the list of prime numbers up to 20, perform calculations, and write the results to 'prime_numbers.txt'.
 """
 
+is_largest_integer_found = False
+largest_integer = 0
+with open("output.txt", "r") as f:
+    for word in f.read().split(' '):
+        try:
+            v = int(word)
+            largest_integer = max(v, largest_integer)
+            is_largest_integer_found = True
+        except ValueError:
+            continue
+if not is_largest_integer_found:
+    print("Largest integer was not found in the file")
+    exit()
+
+prime_numbers = []
+for n in range(2, largest_integer+1):
+    is_prime = True
+    for v in range(2, n):
+        if n % v == 0:
+            is_prime = False
+            break
+    if is_prime:
+        prime_numbers.append(n)
+print("Generated prime numbers:", prime_numbers)
+
+primes_sum = 0
+for n in prime_numbers:
+    primes_sum += n
+print("Sum of prime numbers:", primes_sum)
+
+largest_prime = 0
+smallest_prime = largest_integer
+for n in prime_numbers:
+    largest_prime = max(largest_prime, n)
+    smallest_prime = min(largest_prime, n)
+print("Largest prime number:", largest_prime)
+print("Smallest prime number:", smallest_prime)
+
+is_largest_integer_prime = True
+for v in range(2, largest_integer):
+    if n % v == 0:
+        is_largest_integer_prime = False
+        break
+if is_largest_integer_prime:
+    print("Largest integer is a prime number")
+else:
+    print("Largest integer is not a prime number")
+
+with open("prime_numbers.txt", "w") as f:
+    f.write("Generated prime numbers: "+str(prime_numbers)+"\n")
+    f.write("Sum of prime numbers: "+str(primes_sum)+"\n")
+    f.write("Largest prime number: "+str(largest_prime)+"\n")
+    f.write("Smallest prime number: "+str(smallest_prime)+"\n")
+
+# Result:
+# Generated prime numbers: [2, 3, 5, 7, 11, 13, 17, 19]
+# Sum of prime numbers: 77
+# Largest prime number: 19
+# Smallest prime number: 19
+# Largest integer is not a prime number
 
 
 """10.
